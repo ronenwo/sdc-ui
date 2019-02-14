@@ -1,28 +1,27 @@
-import {NgModule} from "@angular/core";
-import {TileComponent} from "./tile.component";
-import {CommonModule} from "@angular/common";
-import {TileHeaderComponent} from "./header/tile-header.component";
-import {TileInfoComponent} from "./info/tile-info.component";
-import {TileFooterComponent} from "./footer/tile-footer.component";
+import { NgModule } from "@angular/core";
+import { TileComponent } from "./tile.component";
+import { CommonModule } from "@angular/common";
+import { TileContentComponent } from "./children/tile-content.component";
+import { TileFooterComponent } from "./children/tile-footer.component";
+import { TileHeaderComponent } from "./children/tile-header.component";
 
 @NgModule({
     declarations: [
         TileComponent,
-        TileHeaderComponent,
-        TileInfoComponent,
-        TileFooterComponent
+        TileContentComponent,
+        TileFooterComponent,
+        TileHeaderComponent
     ],
     imports: [CommonModule],
     entryComponents: [TileComponent],
     exports: [
         TileComponent,
-        TileHeaderComponent,
-        TileInfoComponent,
-        TileFooterComponent
+        TileContentComponent,
+        TileFooterComponent,
+        TileHeaderComponent
     ]
 })
 
 export class TileModule {
 
 }
-

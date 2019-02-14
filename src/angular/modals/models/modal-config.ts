@@ -1,22 +1,34 @@
-import {ModalButtonConfig} from "./modal-button-config";
+import { Placement } from "../../common/enums";
+import { IButtonComponent } from "../../buttons/ibutton.interface";
 
 export interface IModalConfig {
-
-    size?: string; //'xl|l|md|sm|xsm'
+    size?: string; // xl|l|md|sm|xsm
     title?: string;
     message?: string;
-    buttons?: Array<ModalButtonConfig>;
-    type?: string; //'standard|error|alert';
+    buttons?: IModalButtonComponent[];
+    testId?: string;
+    type?: ModalType;
 }
 
-export interface ModalConfig {
-
-    size?: string; //'xl|l|md|sm|xsm'
-    title?: string;
-    message?: string;
-    buttons?: Array<ModalButtonConfig>;
-    type?: string; //'standard|error|alert';
+export interface IModalButtonComponent extends IButtonComponent {
+    id?: string;
+    callback?: () => void;
+    closeModal?: boolean;
 }
 
+export enum ModalType {
+    info = 'info',
+    warning = 'warning',
+    error = 'error',
+    success = 'success',
+    action = 'action',
+    custom = 'custom'
+}
 
-
+export enum ModalSize {
+    xlarge = "xl",
+    large = "l",
+    medium = "md",
+    small = "sm",
+    xsmall = "xsm"
+}

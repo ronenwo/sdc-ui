@@ -1,15 +1,9 @@
-@import "../button/button";
-
-
 .sdc-tile {
-	$tile-full-width: 180px;
-	$tile-full-height: 180px;
-	$tile-padding: 9px;
+	$tile-full-width: 204px;
+	$tile-full-height: 204px;
+	$tile-padding: 10px;
 
-	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
-	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
-
-	$header-height: 10px;
+	$header-height: $body-font-1;
 	$footer-height: 23px;
 	$content-height: 100%;
 
@@ -17,7 +11,7 @@
 	height: $tile-full-height;
 
 	padding: $tile-padding;
-	border: 1px solid $tlv-light-gray;
+	border: 1px solid $silver;
 	@include border-radius(2px);
 	@include box-sizing;
 
@@ -33,17 +27,17 @@
 	color: $text-black;
 	fill: $dark-gray;
 	transition: box-shadow 0.3s ease-in-out;
-	@extend .body-3;
-	@include box-shadow(0 1px 1px 1px rgba($text-black, 0.06));
+	@include body-3;
+	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
 	&:hover {
 		border-color: $light-gray;
-		@include box-shadow( 0 10px 30px 0 rgba(0, 0, 0, 0.29));
+		@include box-shadow( 0 10px 30px 0 rgba($text-black, 0.25));
 	}
 
 	.blue {
 		color: $blue;
-		fill: $light-blue;
+		fill: $blue;
 	}
 
 	.purple {
@@ -52,19 +46,18 @@
 	}
 
 	.centered {
-		&.sdc-tile-footer {
+		&.sdc-tile-footer, .sdc-tile-info-line {
 			text-align: center;
-		}
-		.sdc-tile-info-line {
-			justify-content: center;
 		}
 	}
 
 	.sdc-tile-header {
-		height: $heading-font-5 + 2px;
+		height: 1.1em;
+		line-height: 1em;
 		@include ellipsis($display: block);
+
 		font-size: $body-font-1;
-		@extend .text-uppercase;
+		text-transform: uppercase;
 	}
 
 	.sdc-tile-content {
@@ -74,7 +67,7 @@
 		height: $content-height;
 
 		.sdc-tile-content-icon {
-			margin-top: 22px;
+			margin-top: 27px;
 			text-align: center;
 
 			svg {
@@ -82,8 +75,8 @@
 				height: 50px;
 
 				&.__vsp {
-					width: 50px;
-					height: 56px;
+					width: 60px;
+					height: 40px;
 				}
 				&.__vlm {
 					width: 45px;
@@ -101,53 +94,59 @@
 			flex-direction: column;
 
 			.sdc-tile-info-line {
-				@extend .text-capitalize;
-				@include ellipsis($display: flex);
-				align-items: center;
+				text-transform: capitalize;
+				@include ellipsis($display: inline-block);
 
 				button {
 					height: 1.67em;
 					width: initial;
 					margin-bottom: 5px;
+					margin-top: 1px;
 					padding: 0 8px;
 					font-size: inherit;
 				}
-
 				&.supertitle {
-					color: $dark-gray;
-					font-size: $body-font-3;
-					margin-bottom: 6px;
+					height: 1.1em;
+					line-height: 1.2;
+					color: $gray;
 				}
-
 				&.title {
+					height: 1.6em;
+					line-height: 1.8;
 					color: $text-black;
-					font-weight: 600;
-					@extend .body-1-semibold;
-					margin-bottom: 4px;
+					@include heading-5;
 				}
 				&.subtitle {
+					height: 1.5em;
+					line-height: 1.6;
 					color: $dark-gray;
+				}
+				&:last-child {
+					margin-bottom: 4px;
 				}
 			}
 		}
 	}
 
 	.sdc-tile-footer {
-		width: $tile-width-less-padding;
 		height: $footer-height;
 		@include box-sizing;
-		border-top: 1px solid $light-gray;
+
+		border-top: 1px solid $silver;
+		padding-top: 8px;
 
 		color: $dark-gray;
 		fill: $dark-gray;
-		@extend .text-capitalize;
+		text-transform: capitalize;
 
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
-
+			&:first-child {
+				@include ellipsis;
+			}
 			svg{
 				width: 20px;
 				height: 12px;
@@ -155,7 +154,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-3;
+				@include body-2;
 
 				.svg-icon-wrapper {
 					.svg-icon-label {
